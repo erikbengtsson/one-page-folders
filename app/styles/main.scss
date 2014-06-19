@@ -1,0 +1,108 @@
+// bower:scss
+// endbower
+$white: #fafafa;
+$orange: #FFF0D8;
+$success-grn: #007A16;
+$light-green:#DAF7DF;
+$fail-red: #BA0000;
+$light-red: #FFD6D6;
+
+* {
+    box-sizing: border-box;
+}
+.curtain {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    background-color: rgba(0,0,0,0.75);
+}
+body {
+    background: $white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.main-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    > li {
+        position: relative;
+        border-radius: 2px;
+        padding: 13px;
+        float: left;
+        width: 100%;
+        margin: 10px 0;
+        background: darken($white, 10%);
+        box-shadow:  2px 2px 0px 0px darken($white, 33%);
+        cursor: pointer;
+        &.active {
+            z-index: 2;
+            box-shadow: none;
+        }
+        // &:hover ul {
+        //     display: block;
+        // }
+        > span {
+            display: block;
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            margin-top: -13px;
+            width: 26px;
+            line-height: 26px;
+            border-radius: 13px;
+            font-size: 18px;
+            background-color: $white;
+            text-align: center;
+            transition: all 0.3s ease;
+            //transition: background-color 0.3s ease;
+            > i {
+                position: relative;
+                top: 1px;
+            }
+            &.open-btn {
+                background-color: $light-green;
+                color: $success-grn;
+            }
+            &.close-btn {
+                transform: rotate(45deg);
+                background-color: $light-red;
+                color: $fail-red;
+            }
+
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            z-index: 2;
+            background: $white;
+            display: none;
+            width: 100%;
+            border-radius: 2px;
+            >li {
+                padding: 13px;
+                width: 100%;
+                float: left;
+                border-bottom: 1px solid darken($white, 10%);
+                &:last-child {
+                    border: 0;
+                }
+            }
+        }
+    }
+}
